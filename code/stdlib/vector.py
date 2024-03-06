@@ -1,80 +1,87 @@
-#-----------------------------------------------------------------------
-# vector.py
-# Copyright © 2000–2015, Robert Sedgewick, Kevin Wayne, and Robert Dondero.
-# Last updated: Fri Oct 20 20:45:16 EDT 2017.
-#-----------------------------------------------------------------------
+"""
+vector.py
+Copyright © 2000–2015, Robert Sedgewick, Kevin Wayne, and Robert Dondero.
+"""
 
 import math
-# import stdlib.stdio as stdio
-# import stdlib.stdarray as stdarray
-import stdio
-import stdarray
+import code.stdlib.stdio as stdio
+import code.stdlib.stdarray as stdarray
 
-#-----------------------------------------------------------------------
+# -----------------------------------------------------------------------
+
 
 class Vector:
 
-    # Construct a new Vector object with numeric Cartesian coordinates
-    # given in array a.
     def __init__(self, a):
-        # Make a defensive copy to ensure immutability.
-        self._coords = a[:]   # Cartesian coordinates
-        self._n = len(a) # Dimension.
+        """Construct a new Vector object with numeric Cartesian coordinates
+        given in array a.
+        """
+        self._coords = a[:]   # defensive copy to ensure immutability
+        self._n = len(a)      # Dimension.
 
-    # Return the ith Cartesian coordinate of self.
     def __getitem__(self, i):
+        """Return the ith Cartesian coordinate of self.
+        """
         return self._coords[i]
 
-    # Return the sum of self and Vector object other.
     def __add__(self, other):
+        """Return the sum of self and Vector object other.
+        """
         result = stdarray.create1D(self._n, 0)
         for i in range(self._n):
             result[i] = self._coords[i] + other._coords[i]
         return Vector(result)
 
-    # Return the difference of self and Vector object other.
     def __sub__(self, other):
+        """Return the difference of self and Vector object other.
+        """
         result = stdarray.create1D(self._n, 0)
         for i in range(self._n):
             result[i] = self._coords[i] - other._coords[i]
         return Vector(result)
 
-    # Return the product of self and numeric object alpha.
     def scale(self, alpha):
+        """Return the product of self and numeric object alpha.
+        """
         result = stdarray.create1D(self._n, 0)
         for i in range(self._n):
             result[i] = alpha * self._coords[i]
         return Vector(result)
 
-    # Return the inner product of self and Vector object other.
     def dot(self, other):
+        """Return the inner product of self and Vector object other.
+        """
         result = 0
         for i in range(self._n):
             result += self._coords[i] * other._coords[i]
         return result
 
-    # Return the magnitude, that is, the Euclidean norm, of self.
     def __abs__(self):
+        """Return the magnitude, that is, the Euclidean norm, of self.
+        """
         return math.sqrt(self.dot(self))
 
-    # Return the unit vector of self.
     def direction(self):
+        """Return the unit vector of self.
+        """
         return self.scale(1.0 / abs(self))
 
-    # Return a string representation of self.
     def __str__(self):
+        """Return a string representation of self.
+        """
         return str(self._coords)
-        
-    # Return the dimension of self.
+
     def __len__(self):
+        """Return the dimension of self.
+        """
         return self._n
         
-#-----------------------------------------------------------------------
+# -----------------------------------------------------------------------
 
-# For testing.
-# Create and use some Vector objects.
 
 def main():
+    """testing: create and use some Vector objects.
+    """
 
     xCoords = [1.0, 2.0, 3.0, 4.0]
     yCoords = [5.0, 2.0, 4.0, 1.0]
@@ -90,10 +97,11 @@ def main():
     stdio.writeln('<x, y>   = ' + str(x.dot(y)))
     stdio.writeln('|x - y|  = ' + str(abs(x - y)))
 
+
 if __name__ == '__main__':
     main()
 
-#-----------------------------------------------------------------------
+# -----------------------------------------------------------------------
 
 # python vector.py
 # x        = [1.0, 2.0, 3.0, 4.0]
