@@ -5,8 +5,10 @@
 #-----------------------------------------------------------------------
 
 import math
-import stdlib.stdio as stdio
-import stdlib.stdarray as stdarray
+# import stdlib.stdio as stdio
+# import stdlib.stdarray as stdarray
+import stdio
+import stdarray
 
 #-----------------------------------------------------------------------
 

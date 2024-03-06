@@ -10,7 +10,8 @@ The stdarray module defines functions related to creating, reading,
 and writing one- and two-dimensional arrays.
 """
 
-import stdlib.stdio as stdio
+# import stdlib.stdio as stdio
+import stdio
 
 #=======================================================================
 # Array creation functions
