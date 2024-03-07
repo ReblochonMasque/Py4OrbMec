@@ -1,5 +1,5 @@
 """
-some useful constants
+some useful constants of our universe
 """
 
 
